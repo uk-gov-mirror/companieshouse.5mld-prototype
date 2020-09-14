@@ -10,7 +10,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
 
-      <h1 class="govuk-heading-l">Check your answers before sending your application</h1>
+      <h1 class="govuk-heading-l">Check your details before sending your report</h1>
 
       <h2 class="govuk-heading-m">Personal details</h2>
 
@@ -171,7 +171,8 @@
         <input type="hidden" name="answers-checked" value="true">
 
         {{ govukButton({
-          text: "Submit discrepancy report"
+          text: "Submit discrepancy report",
+          href: "confirmation"
         }) }}
 
       </form>
