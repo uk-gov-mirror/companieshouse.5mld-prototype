@@ -13,11 +13,7 @@
     <div class="govuk-grid-column-two-thirds">
       <form action="/discrepancy-details/psc-names" method="post">
         {% if errorPSC == true %}
-          {{ govukErrorSummary({
-            titleText: "There is a problem",
-            errorList: errorList
-          }) }}
-          {{ govukRadios({
+          {{ govukCheckboxes({
             idPrefix: "psc",
             name: "psc",
             errorMessage: {
@@ -25,28 +21,28 @@
             },
             fieldset: {
               legend: {
-                html: "Which PSC is incorrect for ZLC LTD?",
+                text: "Which PSC is incorrect for ZLC LTD?",
                 isPageHeading: true,
-                classes: "govuk-label--xl"
+                classes: "govuk-fieldset__legend--xl"
               }
+            },
+            hint: {
+              text: "Select all that apply."
             },
             items: [
               {
-                value: "british",
+                value: "carcasses",
                 text: "Mrs Catherine Isabel Gaynor",
                 hint: {
                   html: "Born November 1962"
                 }
               },
               {
-                value: "other",
+                value: "mines",
                 text: "Mr Jonathan Charles Gaynor",
                 hint: {
                   text: "Born June 1952"
                 }
-              },
-              {
-                divider: "or"
               },
               {
                 value: "other",
@@ -55,33 +51,33 @@
             ]
           }) }}
         {% else %}
-          {{ govukRadios({
+          {{ govukCheckboxes({
             idPrefix: "psc",
             name: "psc",
             fieldset: {
               legend: {
-                html: "Which PSC is incorrect for ZLC LTD?",
+                text: "Which PSC is incorrect for ZLC LTD?",
                 isPageHeading: true,
-                classes: "govuk-label--xl"
+                classes: "govuk-fieldset__legend--xl"
               }
+            },
+            hint: {
+              text: "Select all that apply."
             },
             items: [
               {
-                value: "british",
+                value: "carcasses",
                 text: "Mrs Catherine Isabel Gaynor",
                 hint: {
                   html: "Born November 1962"
                 }
               },
               {
-                value: "other",
+                value: "mines",
                 text: "Mr Jonathan Charles Gaynor",
                 hint: {
                   text: "Born June 1952"
                 }
-              },
-              {
-                divider: "or"
               },
               {
                 value: "other",
