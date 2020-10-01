@@ -204,6 +204,27 @@ router.post('/discrepancy-details/psc-names', function (req, res) {
       errorList: errors
     })
   } else {
+    res.redirect('/discrepancy-details/psc-person')
+  }
+})
+
+router.get('/discrepeancy-details/psc-person', function (req, res) {
+  res.render('/discrepeancy-details/psc-person', {
+  })
+})
+
+router.post('/discrepancy-details/psc-person', function (req, res) {
+  var errors = []
+  if (typeof req.session.data['psc'] === 'undefined') {
+    errors.push({
+      text: 'Select the PSC with the incorrect information',
+      href: '#psc'
+    })
+    res.render('discrepancy-details/psc-person', {
+      errorPSC: true,
+      errorList: errors
+    })
+  } else {
     res.redirect('/discrepancy-details/other-info')
   }
 })

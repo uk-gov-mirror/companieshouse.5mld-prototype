@@ -1,0 +1,58 @@
+{% set title = "Tell us your company number" %}
+{% extends "layout.html" %}
+{% block pageTitle %}
+  {{title}}
+{% endblock %}
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "sign-in"
+  }) }}
+{% endblock %}
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-half">
+      <form action="/discrepancy-details/psc-person" method="post">
+        {{ govukCheckboxes({
+        idPrefix: "psc-name",
+        name: "psc-name",
+        fieldset: {
+          legend: {
+            text: "Which of the following are incorrect for XXXX?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        hint: {
+          text: "Select all that apply."
+        },
+        items: [
+          {
+            value: "name",
+            text: "Name"
+          },
+          {
+            value: "dob",
+            text: "Date of birth"
+          },
+          {
+            value: "nationality",
+            text: "Nationality"
+          },
+          {
+            value: "address",
+            text: "Correspondence address"
+          },
+          {
+            value: "noc",
+            text: "Nature of control"
+          }
+        ]
+      }) }}
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

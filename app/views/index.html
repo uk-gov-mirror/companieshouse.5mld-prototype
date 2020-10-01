@@ -2,11 +2,29 @@
 {% block pageTitle %}
   Report a discrepancy about a beneficial owner on the PSC register by an obliged entity
 {% endblock %}
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+  items: [
+    {
+      text: "Home",
+      href: "https://www.gov.uk/"
+    },
+    {
+      text: "Companies House search",
+      href: "https://find-and-update.company-information.service.gov.uk/"
+    },
+    {
+      text: "Report a discrepancy",
+      href: "/"
+    }
+  ]
+}) }}
+{% endblock %}
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-xl">
-        Report a discrepancy about a beneficial owner on the PSC register
+        {{serviceName}}
       </h1>
       <p class="govuk-body-l">
         Use this service if you are an obliged entity and the information you hold about a beneficial owner is different from the information on the people with significant control (PSC) register.
@@ -20,6 +38,8 @@
       </ul>
       <p>Reporting a discrepancy takes up to 10 minutes.
       </p>
+      <p class="govuk-inset-text">If you’re not an obliged entity, do not use this service to report a PSC discrepancy. If you want to update your PSC details, you can
+        <a class="govuk-link" href="guidance.html">tell Companies House about changes to your limited company</a>.</p>
       {{ govukButton({
         text: "Start now",
         href: "/guest-signin/option",

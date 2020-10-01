@@ -2,6 +2,12 @@
 {% block pageTitle %}
   Obliged entity type
 {% endblock %}
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/guest-signin/option"
+  }) }}
+{% endblock %}
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
@@ -21,7 +27,7 @@
               legend: {
                 text: "What type of obliged entity are you?",
                 isPageHeading: true,
-                classes: "govuk-fieldset__legend--xl"
+                classes: "govuk-fieldset__legend--l"
               }
             },
             items: [
@@ -87,7 +93,7 @@
               legend: {
                 text: "What type of obliged entity are you?",
                 isPageHeading: true,
-                classes: "govuk-fieldset__legend--xl"
+                classes: "govuk-fieldset__legend--l"
               }
             },
             items: [
