@@ -17,20 +17,10 @@
           errorList: errorList
         }) }}
       {% endif %}
-      <h1 class="govuk-heading-l">What information is incorrect for the PSC?</h1>
-      <p class="govuk-body">This should include:
-      </p>
-      <ul class="govuk-list govuk-list--bullet">
-        <li>details of the discrepancy, for example an incorrect address or an invalid PSC statement
-        </li>
-        <li>
-          the date when the discrepancy was first noticed
-        </a>
-      </li>
-    </ul>
-    <form action="/discrepancy-details/other-info" method="post">
-      {% if errorOther == true %}
-        {{ govukTextarea({
+      <h1 class="govuk-heading-l">Further evidence</h1>
+      <form action="/discrepancy-details/other-info" method="post">
+        {% if errorOther == true %}
+          {{ govukTextarea({
             name: "more-detail",
             id: "more-detail",
             label: {
@@ -40,22 +30,22 @@
               text: "Enter the information that is incorrect for the PSC"
             }
           }) }}
-      {% else %}
-        {{ govukTextarea({
+        {% else %}
+          {{ govukTextarea({
             name: "more-detail",
             id: "more-detail",
             label: {
               html: "Incorrect PSC information"
             }
           }) }}
-      {% endif %}
+        {% endif %}
 
-      <form action="/form-handler" method="post" novalidate="novalidate">
-        <input type="hidden" name="answers-checked" value="true">
-        {{ govukButton({
+        <form action="/form-handler" method="post" novalidate="novalidate">
+          <input type="hidden" name="answers-checked" value="true">
+          {{ govukButton({
           text: "Continue"
         }) }}
-      </form>
+        </form>
+      </div>
     </div>
-  </div>
-{% endblock %}
+  {% endblock %}

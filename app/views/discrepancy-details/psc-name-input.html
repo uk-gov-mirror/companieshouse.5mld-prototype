@@ -1,0 +1,34 @@
+{% set title = "Evidence" %}
+{% extends "layout.html" %}
+{% block pageTitle %}
+  {{title}}
+{% endblock %}
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "psc-person"
+  }) }}
+{% endblock %}
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="/discrepancy-details/psc-name-input" method="post">
+        {{ govukTextarea({
+          name: "psc-name-input",
+          id: "psc-name-input",
+          label: {
+            text: "Evidence that Mrs Catherine Isabel Gaynor name is wrong?",
+            classes: "govuk-label--l",
+            isPageHeading: true
+          },
+          hint: {
+            text: ""
+          }
+        }) }}
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

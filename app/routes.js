@@ -118,7 +118,7 @@ router.post('/obliged-entity-details-name', function (req, res) {
       errorList: errors
     })
   } else {
-    res.redirect('obliged-entity-email')
+    res.redirect('/discrepancy-details/company-number')
   }
 })
 
@@ -143,27 +143,6 @@ router.post('/obliged-entity-details-organisation', function (req, res) {
   }
 })
 
-router.get('/obliged-entity-email', function (req, res) {
-  res.render('obliged-entity-email', {
-  })
-})
-
-router.post('/obliged-entity-email', function (req, res) {
-  var errors = []
-  if (req.session.data['email'] === '') {
-    errors.push({
-      text: 'Enter your email address',
-      href: '#email'
-    })
-    res.render('obliged-entity-email', {
-      errorEmail: true,
-      errorList: errors
-    })
-  } else {
-    res.redirect('/discrepancy-details/company-number')
-  }
-})
-
 router.get('/discrepeancy-details/company-number', function (req, res) {
   res.render('/discrepeancy-details/company-number', {
   })
@@ -183,7 +162,7 @@ router.post('/discrepancy-details/company-number', function (req, res) {
   } if (req.session.data['company-number'] === '00445790') {
     res.redirect('/unable-to-use')
   } else {
-    res.redirect('/discrepancy-details/psc-names')
+    res.redirect('/discrepancy-details/confirm-company')
   }
 })
 
@@ -215,7 +194,7 @@ router.get('/discrepeancy-details/psc-person', function (req, res) {
 
 router.post('/discrepancy-details/psc-person', function (req, res) {
   var errors = []
-  if (typeof req.session.data['psc'] === 'undefined') {
+  if (typeof req.session.data['psc-name'] === 'undefined') {
     errors.push({
       text: 'Select the PSC with the incorrect information',
       href: '#psc'
@@ -224,6 +203,50 @@ router.post('/discrepancy-details/psc-person', function (req, res) {
       errorPSC: true,
       errorList: errors
     })
+  } else {
+    res.redirect('/discrepancy-details/psc-name-input')
+  }
+})
+
+router.get('/discrepeancy-details/psc-name-input', function (req, res) {
+  res.render('/discrepeancy-details/psc-name-input', {
+  })
+})
+
+router.post('/discrepancy-details/psc-name-input', function (req, res) {
+  var errors = []
+  if (typeof req.session.data['psc-name-input'] === 'undefined') {
+    errors.push({
+      text: 'Select the PSC with the incorrect information',
+      href: '#psc-name-input'
+    })
+    res.render('discrepancy-details/psc-name-input', {
+      errorPSC: true,
+      errorList: errors
+    })
+  } else {
+    res.redirect('../check-your-answers')
+  }
+})
+
+router.get('/discrepeancy-details/other-info-question', function (req, res) {
+  res.render('/discrepeancy-details/other-info-question', {
+  })
+})
+
+router.post('/discrepancy-details/other-info-question', function (req, res) {
+  var errors = []
+  if (typeof req.session.data['other-info-question'] === 'undefined') {
+    errors.push({
+      text: 'Select the PSC with the incorrect information',
+      href: '#other-info-question'
+    })
+    res.render('discrepancy-details/other-info-question', {
+      errorPSC: true,
+      errorList: errors
+    })
+  } if (req.session.data['other-info-question'] === 'no') {
+    res.redirect('../check-your-answers')
   } else {
     res.redirect('/discrepancy-details/other-info')
   }
