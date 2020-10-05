@@ -10,7 +10,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
 
-      <h1 class="govuk-heading-l">Check your details before sending your report</h1>
+      <h1 class="govuk-heading-l">Check your answers before submitting your PSC discrepancy report</h1>
 
       <h2 class="govuk-heading-m">Personal details</h2>
 
@@ -87,7 +87,47 @@
           }
         ]
       }) }}
+      <h2 class="govuk-heading-m">Company details</h2>
 
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+          {
+            key: {
+              text: "Company number"
+            },
+            value: {
+              text: "SC393288"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "previous application number"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Company name"
+            },
+            value: {
+              text: "ZLC LTD"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "licence type"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
       <h2 class="govuk-heading-m">Discrepancy details</h2>
 
       {{ govukSummaryList({
@@ -95,7 +135,7 @@
         rows: [
           {
             key: {
-              text: "Name"
+              text: "PSC name"
             },
             value: {
               text: "Mrs Catherine Isabel Gaynor"
@@ -129,7 +169,7 @@
           },
           {
             key: {
-              text: "Details provided"
+              text: "More information about the discrepancy"
             },
             value: {
               html: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In dignissim orci eu tellus gravida, sit amet semper justo tincidunt. Proin dui leo, suscipit in faucibus ut, dignissim rhoncus quam. Integer iaculis tellus purus, id congue massa mollis commodo. Sed ut venenatis lectus. Vestibulum tristique lorem sit amet arcu posuere interdum."
@@ -150,14 +190,14 @@
   </div>
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <h2 class="govuk-heading-m">Now submit your report</h2>
+      <h2 class="govuk-heading-m">Now submit your PSC discrepancy report</h2>
       <p class="govuk-body">By submitting this report you are confirming that, to the best of your knowledge, the details you are providing are correct.</p>
       <form action="/form-handler" method="post" novalidate="novalidate">
 
         <input type="hidden" name="answers-checked" value="true">
 
         {{ govukButton({
-          text: "Submit discrepancy report",
+          text: "Submit PSC discrepancy report",
           href: "confirmation"
         }) }}
 
