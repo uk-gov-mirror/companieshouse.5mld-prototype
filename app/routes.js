@@ -30,7 +30,7 @@ router.post('/guest-signin/option', function (req, res) {
   } if (value === 'yes') {
     res.redirect('../sign-in')
   } else {
-    res.redirect('../obliged-entity-type')
+    res.redirect('../obliged-entity-details-name')
   }
 })
 
@@ -118,7 +118,7 @@ router.post('/obliged-entity-details-name', function (req, res) {
       errorList: errors
     })
   } else {
-    res.redirect('/discrepancy-details/company-number')
+    res.redirect('/obliged-entity-type')
   }
 })
 
@@ -139,7 +139,7 @@ router.post('/obliged-entity-details-organisation', function (req, res) {
       errorList: errors
     })
   } else {
-    res.redirect('obliged-entity-details-name')
+    res.redirect('/discrepancy-details/company-number')
   }
 })
 

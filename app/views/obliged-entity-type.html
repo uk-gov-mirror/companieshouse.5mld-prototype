@@ -5,7 +5,7 @@
 {% block beforeContent %}
   {{ govukBackLink({
     text: "Back",
-    href: "/guest-signin/option"
+    href: "/obliged-entity-details-name"
   }) }}
 {% endblock %}
 {% block content %}
@@ -17,7 +17,6 @@
             titleText: "There is a problem",
             errorList: errorList
           }) }}
-          
           {{ govukRadios({
             idPrefix: "obliged-type",
             name: "obliged-type",
@@ -31,7 +30,6 @@
                 classes: "govuk-fieldset__legend--l"
               }
             },
-
             items: [
               {
                 value: "Credit institution",
@@ -154,8 +152,6 @@
             ]
           }) }}
         {% endif %}
-        <p class="govuk-inset-text">If you’re not an obliged entity, do not use this service to report a PSC discrepancy. If you want to update your PSC details, you can
-          <a class="govuk-link" href="guidance.html">tell Companies House about changes to your limited company</a>.</p>
         {{ govukButton({
         text: "Continue"
       }) }}

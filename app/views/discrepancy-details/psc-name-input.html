@@ -13,31 +13,21 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <form action="/discrepancy-details/psc-name-input" method="post">
-        <h3 class="govuk-heading-s">You should tell us:</h3>
-        <ul class="govuk-list govuk-list--bullet">
-          <li>which name is incorrect</li>
-          <li>the correct name</li>
-          <li>any other information about this discrepancy that supports your report</li>
-        </ul>
-        {{ govukTextarea({
+        <div class="govuk-form-group">
+  <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="more-detail">
+      Give us more information about the discrepancy in Mrs Catherine Isabel Gaynor's name
+    </label>
+  </h1>
+  <h3 class="govuk-heading-s">You should tell us:</h3>
+  <ul class="govuk-list govuk-list--bullet">
+    <li>which name is incorrect</li>
+    <li>the correct name</li>
+    <li>any other relevant information about this discrepancy that supports your report</li>
+  </ul>
 
-          name: "psc-name-input",
+  <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="5" aria-describedby="more-detail-hint"></textarea>
+</div>
 
-          id: "psc-name-input",
-
-          label: {
-            text: "Give us more information about the discrepancy in Mrs Catherine Isabel Gaynor's name",
-
-            classes: "govuk-label--l",
-
-            isPageHeading: true
-          },
-
-          hint: {
-            text: ""
-          }
-
-        }) }}
         {{ govukButton({
           text: "Continue"
         }) }}
