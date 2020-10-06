@@ -30,7 +30,7 @@
         text: "Company number"
       },
       {
-        text: "SC393288"
+        text: "10393288"
       }
     ],
     [
@@ -43,7 +43,7 @@
     ],
     [
       {
-        text: "PSC name"
+        text: "Name of PSC"
       },
       {
         text: "Mrs Catherine Isabel Gaynor"
@@ -51,7 +51,7 @@
     ],
     [
       {
-        text: "Discrepancy type"
+        text: "Type of discrepancy"
       },
       {
         text: "Name"
@@ -76,13 +76,14 @@
       </p>
       <p class="govuk-body">We'll email you to let you know the outcome of our investigation.
       </p>
-      <p class="govuk-body">If you have any further information concerning this discrepancy, email <a href="#" class="govuk-link">DSR@companieshouse.gov.uk</a>.
+      {{ govukButton({
+        text: "Submit another PSC discrepancy report",
+        href: "/discrepancy-details/company-number"
+      }) }}
+            <h3 class="govuk-heading-m">Contact us</h3>
+      <p class="govuk-body">If you have any further information concerning this discrepancy, email <a href="#" class="govuk-link">pscdiscrepancies@companieshouse.gov.uk</a>.
       </p>
       <p class="govuk-body">
-        {{ govukButton({
-          text: "Submit another PSC discrepancy report",
-          href: "/discrepancy-details/company-number"
-        }) }}
       </p>
       <h3 class="govuk-heading-m">Feedback</h3>
       <p class="govuk-body">This is a new service. Help us improve it by completing our
