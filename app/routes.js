@@ -18,7 +18,7 @@ router.get('/guest-signin/option', function (req, res) {
 router.post('/guest-signin/option', function (req, res) {
   var errors = []
   var value = req.session.data['guest-signin']
-  if (req.session.data['guest-signin'] === '') {
+  if (req.session.data['guest-signin'] === 'undefined') {
     errors.push({
       text: 'Enter the company authentication code',
       href: '#auth-number'
@@ -29,7 +29,7 @@ router.post('/guest-signin/option', function (req, res) {
     })
   } if (value === 'yes') {
     res.redirect('../sign-in')
-  } else {
+  } if (value === 'no') {
     res.redirect('../obliged-entity-details-name')
   }
 })
@@ -99,24 +99,36 @@ router.get('/obliged-entity-name', function (req, res) {
 
 router.post('/obliged-entity-details-name', function (req, res) {
   var errors = []
+  var emailHasError = false
+  var nameHasError = false
   if (req.session.data['full-name'] === '') {
     errors.push({
       text: 'Enter your full name',
       href: '#full-name'
     })
+    if (req.session.data['email'] === '') {
+      emailHasError = true
+      errors.push({
+        text: 'Enter your email address',
+        href: '#email-error'
+      })
+    }
     res.render('obliged-entity-details-name', {
       errorName: true,
       errorList: errors
     })
-  } else if (req.session.data['full-name'] === '@') {
+  } if (req.session.data['full-name'] === '@') {
     errors.push({
       text: 'Full name must only include letters a to z, hyphens, spaces and apostrophes',
       href: '#full-name'
     })
     res.render('obliged-entity-details-name', {
       errorNametwo: true,
+      errorEmail: emailHasError,
       errorList: errors
     })
+  } if (emailHasError || nameHasError) {
+  // this
   } else {
     res.redirect('/obliged-entity-type')
   }

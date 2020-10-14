@@ -13,11 +13,13 @@
     <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-l">What are your contact details?</h1>
       <form action="/obliged-entity-details-name" method="post">
-        {% if errorNametwo == true %}
+        {% if errorEmail == true or errorNametwo == true %}
           {{ govukErrorSummary({
             titleText: "There is a problem",
             errorList: errorList
           }) }}
+        {% endif %}
+        {% if errorName == true %}
           {{ govukInput({
             label: {
               text: "Full name"
@@ -33,34 +35,14 @@
               text: "Name must only include letters a to z, hyphens, spaces and apostrophes"
             }
           }) }}
-        {% elif errorName == true %}
-          {{ govukErrorSummary({
-            titleText: "There is a problem",
-            errorList: errorList
-          }) }}
-          {{ govukInput({
-            label: {
-              text: "What is your name?"
-            },
-            id: "full-name",
-              classes: "govuk-!-width-two-thirds",
-            name: "full-name",
-            autocomplete: "name",
-            attributes: {
-              spellcheck: "false"
-            },
-            errorMessage: {
-              text: "Enter your full name"
-            }
-          }) }}
         {% else %}
           {{ govukInput({
             label: {
               text: "Full name"
             },
             id: "full-name",
-              classes: "govuk-!-width-two-thirds",
             name: "full-name",
+            classes: "govuk-!-width-two-thirds",
             autocomplete: "name",
             attributes: {
               spellcheck: "false"
