@@ -11,14 +11,14 @@
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
+      {% if errorEmail == true or errorNametwo == true %}
+        {{ govukErrorSummary({
+          titleText: "There is a problem",
+          errorList: errorList
+        }) }}
+      {% endif %}
       <h1 class="govuk-heading-l">What are your contact details?</h1>
       <form action="/obliged-entity-details-name" method="post">
-        {% if errorEmail == true or errorNametwo == true %}
-          {{ govukErrorSummary({
-            titleText: "There is a problem",
-            errorList: errorList
-          }) }}
-        {% endif %}
         {% if errorName == true %}
           {{ govukInput({
             label: {

@@ -1,0 +1,38 @@
+{% set title = "Evidence" %}
+{% extends "layout.html" %}
+{% block pageTitle %}
+  {{title}}
+{% endblock %}
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "psc-person"
+  }) }}
+{% endblock %}
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="/discrepancy-details/psc-name-input" method="post">
+        <div class="govuk-form-group">
+          <h1 class="govuk-label-wrapper">
+            <label class="govuk-label govuk-label--l" for="more-detail">
+              Give us more information about the discrepancy in Mrs Catherine Isabel Gaynor's name
+            </label>
+          </h1>
+          <h3 class="govuk-heading-s">You should tell us:</h3>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>which part of the PSC's name is incorrect</li>
+            <li>the correct name</li>
+            <li>any other relevant information about this discrepancy that supports your report</li>
+          </ul>
+
+          <textarea class="govuk-textarea" id="psc-name-input" name="psc-name-input" rows="5" aria-describedby="more-detail-hint"></textarea>
+        </div>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

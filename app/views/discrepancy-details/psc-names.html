@@ -13,6 +13,15 @@
     <div class="govuk-grid-column-two-thirds">
       <form action="/discrepancy-details/psc-names" method="post">
         {% if errorPSC == true %}
+          {{ govukErrorSummary({
+            titleText: "There is a problem",
+            errorList: [
+              {
+                text: "Select the PSC with a discrepancy",
+                href: "#psc"
+              }
+            ]
+          }) }}
           {{ govukCheckboxes({
             idPrefix: "psc",
             name: "psc",

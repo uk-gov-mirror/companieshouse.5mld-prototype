@@ -13,42 +13,80 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <form action="/guest-signin/option" method="post">
-        {{ govukRadios({
-  idPrefix: "guest-signin",
-  name: "guest-signin",
-  fieldset: {
-    legend: {
-      text: "Do you want to sign in with a Companies House account?",
-      isPageHeading: true,
-      classes: "govuk-fieldset__legend--l"
-    }
-  },
-  hint: {
-    text: "This is different from a WebFiling account."
-  },
-  items: [
-    {
-      value: "yes",
-      text: "Yes, sign in or register"
-    },
-    {
-      value: "no",
-      text: " No, continue as guest"
-    }
-  ]
-}) }}
+        {% if errorOption == true %}
+          {{ govukErrorSummary({
+            titleText: "There is a problem",
+            errorList: [
+              {
+                text: "Error summary message",
+                href: "#guest-signin"
+              }
+            ]
+          }) }}
+          {{ govukRadios({
+            idPrefix: "guest-signin",
+            name: "guest-signin",
+            fieldset: {
+              legend: {
+                text: "Do you want to sign in with a Companies House account?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
+            },
+            errorMessage: {
+              text: "Error message"
+            },
+            hint: {
+              text: "This is different from a WebFiling account."
+            },
+            items: [
+              {
+                value: "yes",
+                text: "Yes, sign in or register"
+              },
+              {
+                value: "no",
+                text: " No, continue as guest"
+              }
+            ]
+          }) }}
+        {% else %}
+          {{ govukRadios({
+            idPrefix: "guest-signin",
+            name: "guest-signin",
+            fieldset: {
+              legend: {
+                text: "Do you want to sign in with a Companies House account?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
+            },
+            hint: {
+              text: "This is different from a WebFiling account."
+            },
+            items: [
+              {
+                value: "yes",
+                text: "Yes, sign in or register"
+              },
+              {
+                value: "no",
+                text: " No, continue as guest"
+              }
+            ]
+          }) }}
+        {% endif %}
         {{ govukDetails({
-  summaryText: "Read the benefits of using a Companies House account ",
-  html: "You: <ul class='govuk-list govuk-list--bullet'>
-  <li>need a Companies House account to file online</li>
-  <li>can follow companies to check what they file</li>
-  <li>can download a company snapshot to see its information at a glance</li>
-</ul>"
-}) }}
-
+          summaryText: "Read the benefits of using a Companies House account ",
+          html: "You: <ul class='govuk-list govuk-list--bullet'>
+          <li>need a Companies House account to file online</li>
+          <li>can follow companies to check what they file</li>
+          <li>can download a company snapshot to see its information at a glance</li>
+        </ul>"
+        }) }}
         {{ govukButton({
-  text: "Continue"
-}) }}
+          text: "Continue"
+        }) }}
       </form>
     </div>
   </div>

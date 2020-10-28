@@ -18,13 +18,13 @@ router.get('/guest-signin/option', function (req, res) {
 router.post('/guest-signin/option', function (req, res) {
   var errors = []
   var value = req.session.data['guest-signin']
-  if (req.session.data['guest-signin'] === 'undefined') {
+  if (typeof req.session.data['guest-signin'] === 'undefined') {
     errors.push({
       text: 'Enter the company authentication code',
       href: '#auth-number'
     })
     res.render('guest-signin/option', {
-      errorAuth: true,
+      errorOption: true,
       errorList: errors
     })
   } if (value === 'yes') {
@@ -102,20 +102,16 @@ router.post('/obliged-entity-details-name', function (req, res) {
   var emailHasError = false
   var nameHasError = false
   if (req.session.data['full-name'] === '') {
+    nameHasError = true
     errors.push({
       text: 'Enter your full name',
       href: '#full-name'
     })
-    if (req.session.data['email'] === '') {
-      emailHasError = true
-      errors.push({
-        text: 'Enter your email address',
-        href: '#email-error'
-      })
-    }
-    res.render('obliged-entity-details-name', {
-      errorName: true,
-      errorList: errors
+  } if (req.session.data['email'] === '') {
+    emailHasError = true
+    errors.push({
+      text: 'Enter your email address',
+      href: '#email-error'
     })
   } if (req.session.data['full-name'] === '@') {
     errors.push({
@@ -128,12 +124,17 @@ router.post('/obliged-entity-details-name', function (req, res) {
       errorList: errors
     })
   } if (emailHasError || nameHasError) {
-  // this
+    res.render('obliged-entity-details-name', {
+      errorEmail: emailHasError,
+      errorName: nameHasError,
+      errorList: errors
+    })
   } else {
     res.redirect('/obliged-entity-type')
   }
 })
 
+// Organisation name
 router.get('/obliged-entity-organisation', function (req, res) {
   res.render('obliged-entity-organisation', {
   })
@@ -155,14 +156,17 @@ router.post('/obliged-entity-details-organisation', function (req, res) {
   }
 })
 
+// Company number
 router.get('/discrepeancy-details/company-number', function (req, res) {
-  res.render('/discrepeancy-details/company-number', {
+  res.render('discrepeancy-details/company-number', {
   })
 })
 
 router.post('/discrepancy-details/company-number', function (req, res) {
   var errors = []
-  if (req.session.data['company-number'] === '') {
+  var str = req.session.data['company-number']
+  var n = str.length
+  if (str === '') {
     errors.push({
       text: 'Enter the company number',
       href: '#company-number'
@@ -171,6 +175,17 @@ router.post('/discrepancy-details/company-number', function (req, res) {
       errorNum: true,
       errorList: errors
     })
+    return
+  } if (n !== 8) {
+    errors.push({
+      text: 'Company number must be 8 characters ',
+      href: '#company-number'
+    })
+    res.render('discrepancy-details/company-number', {
+      errorNum: true,
+      errorList: errors
+    })
+    return
   } if (req.session.data['company-number'] === '00445790') {
     res.redirect('/unable-to-use')
   } else {
@@ -178,6 +193,7 @@ router.post('/discrepancy-details/company-number', function (req, res) {
   }
 })
 
+// All of the PSC's for that company
 router.get('/discrepeancy-details/psc-names', function (req, res) {
   res.render('/discrepeancy-details/psc-names', {
   })
@@ -194,6 +210,8 @@ router.post('/discrepancy-details/psc-names', function (req, res) {
       errorPSC: true,
       errorList: errors
     })
+  } if (req.session.data['psc'] === 'other') {
+    res.redirect('/discrepancy-details/psc-missing')
   } else {
     res.redirect('/discrepancy-details/psc-person')
   }
@@ -264,6 +282,29 @@ router.post('/discrepancy-details/other-info-question', function (req, res) {
   }
 })
 
+// PSC Missing Information
+router.get('/discrepeancy-details/psc-missing', function (req, res) {
+  res.render('/discrepeancy-details/psc-missing', {
+  })
+})
+
+router.post('/discrepancy-details/psc-missing', function (req, res) {
+  var errors = []
+  if (req.session.data['more-detail'] === '') {
+    errors.push({
+      text: 'Enter the information that is incorrect for the PSC',
+      href: '#more-detail'
+    })
+    res.render('discrepancy-details/psc-missing', {
+      errorOther: true,
+      errorList: errors
+    })
+  } else {
+    res.redirect('/check-your-answers')
+  }
+})
+
+// Other information about the report (not in the prototype at the moment)
 router.get('/discrepeancy-details/other-info', function (req, res) {
   res.render('/discrepeancy-details/other-info', {
   })
