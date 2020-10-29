@@ -112,7 +112,7 @@ router.post('/oe-contact', function (req, res) {
     emailHasError = true
     errors.push({
       text: 'Enter your email address',
-      href: '#email-error'
+      href: '#email'
     })
   } if (req.session.data['full-name'] === '@') {
     errors.push({
