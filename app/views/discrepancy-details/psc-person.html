@@ -13,7 +13,6 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <form action="/discrepancy-details/psc-person" method="post">
-
         {{ govukCheckboxes({
         idPrefix: "psc-name",
         name: "psc-name",
@@ -49,7 +48,7 @@
             text: "Nature of control"
           }
         ]
-      }) }}
+        }) }}
         {{ govukButton({
           text: "Continue"
         }) }}
