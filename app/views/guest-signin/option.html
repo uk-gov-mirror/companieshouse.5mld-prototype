@@ -11,7 +11,7 @@
 {% endblock %}
 {% block content %}
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
       <form action="/guest-signin/option" method="post">
         {% if errorOption == true %}
           {{ govukErrorSummary({
