@@ -5,13 +5,10 @@
     href: "discrepancy-details/other-info"
   }) }}
 {% endblock %}
-
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
-
       <h1 class="govuk-heading-l">Your details</h1>
-
       {{ govukSummaryList({
         classes: 'govuk-!-margin-bottom-9',
         rows: [
@@ -85,14 +82,11 @@
           }
         ]
       }) }}
-
       {{ govukButton({
-          text: "Continue",
-          href: "discrepancy-details/company-number"
-        }) }}
-
+        text: "Continue",
+        href: "discrepancy-details/company-number"
+       }) }}
     </form>
-
   </div>
 </div>
 {% endblock %}

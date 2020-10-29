@@ -34,14 +34,14 @@
 {% endblock %}
 
 {% block pageTitle %}
-  Report a discrepancy about a beneficial owner on the PSC register
+  {{serviceName}}
 {% endblock %}
 
 {% block header %}
   {% include "includes/cookie-banner.html" %}
   {# Set serviceName in config.js. #}
   {{ govukHeader({
-    homepageUrl: "/",
+    homepageUrl: "https://www.gov.uk/",
     serviceName: serviceName,
     serviceUrl: "/",
     containerClasses: "govuk-width-container"

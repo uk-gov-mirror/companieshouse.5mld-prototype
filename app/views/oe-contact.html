@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% block pageTitle %}
-  Your full name
+  Your contact details
 {% endblock %}
 {% block beforeContent %}
   {{ govukBackLink({
@@ -18,7 +18,7 @@
         }) }}
       {% endif %}
       <h1 class="govuk-heading-l">What are your contact details?</h1>
-      <form action="/obliged-entity-details-name" method="post">
+      <form action="/oe-contact" method="post">
         {% if errorName == true %}
           {{ govukInput({
             label: {

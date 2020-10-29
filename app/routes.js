@@ -30,7 +30,7 @@ router.post('/guest-signin/option', function (req, res) {
   } if (value === 'yes') {
     res.redirect('../sign-in')
   } if (value === 'no') {
-    res.redirect('../obliged-entity-details-name')
+    res.redirect('../oe-contact')
   }
 })
 
@@ -71,33 +71,35 @@ router.post('/sign-in', function (req, res) {
   }
 })
 
-router.get('/obliged-entity-type', function (req, res) {
-  res.render('obliged-entity-type', {
+// Type of Obliged entity
+router.get('/oe-type', function (req, res) {
+  res.render('oe-type', {
   })
 })
 
-router.post('/obliged-entity-type', function (req, res) {
+router.post('/oe-type', function (req, res) {
   var errors = []
   if (typeof req.session.data['obliged-type'] === 'undefined') {
     errors.push({
       text: 'Select what type of obliged entity you are',
       href: '#obliged-type'
     })
-    res.render('obliged-entity-type', {
+    res.render('oe-type', {
       errorType: true,
       errorList: errors
     })
   } else {
-    res.redirect('obliged-entity-details-organisation')
+    res.redirect('oe-details')
   }
 })
 
-router.get('/obliged-entity-name', function (req, res) {
-  res.render('obliged-entity-name', {
+// Obliged entity name
+router.get('/oe-contact', function (req, res) {
+  res.render('oe-contact', {
   })
 })
 
-router.post('/obliged-entity-details-name', function (req, res) {
+router.post('/oe-contact', function (req, res) {
   var errors = []
   var emailHasError = false
   var nameHasError = false
@@ -118,36 +120,36 @@ router.post('/obliged-entity-details-name', function (req, res) {
       text: 'Full name must only include letters a to z, hyphens, spaces and apostrophes',
       href: '#full-name'
     })
-    res.render('obliged-entity-details-name', {
+    res.render('oe-contact', {
       errorNametwo: true,
       errorEmail: emailHasError,
       errorList: errors
     })
   } if (emailHasError || nameHasError) {
-    res.render('obliged-entity-details-name', {
+    res.render('oe-contact', {
       errorEmail: emailHasError,
       errorName: nameHasError,
       errorList: errors
     })
   } else {
-    res.redirect('/obliged-entity-type')
+    res.redirect('/oe-type')
   }
 })
 
 // Organisation name
-router.get('/obliged-entity-organisation', function (req, res) {
-  res.render('obliged-entity-organisation', {
+router.get('/oe-details', function (req, res) {
+  res.render('oe-details', {
   })
 })
 
-router.post('/obliged-entity-details-organisation', function (req, res) {
+router.post('/oe-details', function (req, res) {
   var errors = []
   if (req.session.data['your-organisation-name'] === '') {
     errors.push({
       text: 'Enter your organisation name',
       href: '#your-organisation-name'
     })
-    res.render('obliged-entity-details-organisation', {
+    res.render('oe-details', {
       errorTelephoneNumber: true,
       errorList: errors
     })
@@ -260,6 +262,7 @@ router.post('/discrepancy-details/psc-name-input', function (req, res) {
   }
 })
 
+// Do you want to add other information (not in the prototype at the moment)
 router.get('/discrepeancy-details/other-info-question', function (req, res) {
   res.render('/discrepeancy-details/other-info-question', {
   })

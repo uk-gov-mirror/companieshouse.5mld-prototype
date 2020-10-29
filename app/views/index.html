@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% block pageTitle %}
-  Report a discrepancy about a beneficial owner on the PSC register by an obliged entity
+  {{serviceName}}
 {% endblock %}
 {% block beforeContent %}
   {{ govukBreadcrumbs({
@@ -39,7 +39,6 @@
         <a class="govuk-link" href="guidance.html">tell Companies House about changes to your limited company</a>.</p>
       <p>Reporting a discrepancy takes up to 10 minutes.
       </p>
-
       {{ govukButton({
         text: "Start now",
         href: "/guest-signin/option",
