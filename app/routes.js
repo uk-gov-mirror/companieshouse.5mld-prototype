@@ -210,6 +210,7 @@ router.post('/discrepancy-details/psc-names', function (req, res) {
       errorPSC: true,
       errorList: errors
     })
+    return
   } if (req.session.data['psc'] === 'other') {
     res.redirect('/discrepancy-details/psc-missing')
   } else {
