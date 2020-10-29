@@ -1,6 +1,5 @@
 const express = require('express')
 const router = express.Router()
-const { check } = require('express-validator')
 
 // Add your routes here - above the module.exports line
 router.get('/', function (req, res) {
@@ -9,7 +8,7 @@ router.get('/', function (req, res) {
   })
 })
 
-// Guest sign in
+// Guest sign in option
 router.get('/guest-signin/option', function (req, res) {
   res.render('guest-signin/option', {
   })
