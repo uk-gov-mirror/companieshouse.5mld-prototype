@@ -10,62 +10,95 @@
         titleText: "PSC discrepancy report submitted",
         html: buttonHref
       }) }}
-      {{ govukTable({
-        caption: "",
-        firstCellIsHeader: true,
-        head: [
-          {
-            text: "",
-            classes: 'govuk-!-width-one-half'
-          },
-          {
-            text: "",
-            classes: 'govuk-!-width-one-half'
-          }
-        ],
+      {{ govukSummaryList({
         rows: [
-          [
-            {
-              text: "Company number"
-            },
-            {
-              text: "10393288"
-            }
-          ],
-          [
-            {
-              text: "Company name"
-            },
-            {
-              text: "ZLC LTD"
-            }
-          ],
-          [
-            {
-              text: "Name of PSC"
-            },
-            {
-              text: "Mrs Catherine Isabel Gaynor"
-            }
-          ],
-          [
-            {
-              text: "Type of discrepancy"
-            },
-            {
-              text: "Name"
-            }
-          ],
-          [
-            {
-              text: "More information about the discrepancy"
-            },
-            {
-              text: "The PSC's first name is shown as 'Catherine' on the PSC register. It should be shown as 'Catelin'. This is what is shown on her driver's licence."
-            }
-          ]
-        ]
-      }) }}
+          {
+           key: {
+             text: "Company number"
+           },
+           value: {
+             text: "10393288"
+           },
+           actions: {
+             items: [
+               {
+                 href: "",
+                 text: "",
+                 visuallyHiddenText: ""
+               }
+             ]
+           }
+         },
+         {
+           key: {
+             text: "Company name"
+           },
+           value: {
+             text: "ZLC LTD"
+           },
+           actions: {
+             items: [
+               {
+                 href: "",
+                 text: "",
+                 visuallyHiddenText: ""
+               }
+             ]
+           }
+         },
+         {
+           key: {
+             text: "Name of PSC"
+           },
+           value: {
+             text: "Mrs Catherine Isabel Gaynor"
+           },
+           actions: {
+             items: [
+               {
+                 href: "",
+                 text: "",
+                 visuallyHiddenText: ""
+               }
+             ]
+           }
+         },
+         {
+           key: {
+             text: "Type of discrepancy"
+           },
+           value: {
+             text: "Name"
+           },
+           actions: {
+             items: [
+               {
+                 href: "",
+                 text: "",
+                 visuallyHiddenText: ""
+               }
+             ]
+           }
+         },
+         {
+           key: {
+             text: "More information about the discrepancy"
+           },
+           value: {
+             text: "The PSC's first name is shown as 'Catherine' on the PSC register. It should be shown as 'Catelin'. This is what is shown on her driver's licence."
+           },
+           actions: {
+             items: [
+               {
+                 href: "",
+                 text: "",
+                 visuallyHiddenText: ""
+               }
+             ]
+           }
+         }
+       ]
+     }) }}
       <h2 class="govuk-heading-m">What happens next</h2>
       <p class="govuk-body">We have sent a confirmation email to sphillips@myorganisation.org which contains your reference number.
       </p>
