@@ -2,7 +2,7 @@
 {% block beforeContent %}
   {{ govukBackLink({
     text: "Back",
-    href: "discrepancy-details/other-info"
+    href: "discrepancy-details/psc-name-input"
   }) }}
 {% endblock %}
 {% block content %}
@@ -120,7 +120,7 @@
             Discrepancy type
           </dt>
           <dd class="govuk-summary-list__value">
-            Date of birth
+            Name
           </dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="#">
@@ -134,7 +134,7 @@
             More information about the discrepancy
           </dt>
           <dd class="govuk-summary-list__value">
-            The PSC's date of birth is shown as 'November 1962' on the PSC register. The month is incorrect, it should be shown as 'October'. This is what is shown on her driver's licence.
+            {{ data['psc-name-input'] }}
           </dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="#">
