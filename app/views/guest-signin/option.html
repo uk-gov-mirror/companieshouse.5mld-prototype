@@ -18,7 +18,7 @@
             titleText: "There is a problem",
             errorList: [
               {
-                text: "Error summary message",
+                text: "Select if you want to sign in with a Companies House account",
                 href: "#guest-signin"
               }
             ]
@@ -34,7 +34,7 @@
               }
             },
             errorMessage: {
-              text: "Error message"
+              text: "Select if you want to sign in with a Companies House account"
             },
             hint: {
               text: "This is different from a WebFiling account."
@@ -77,9 +77,8 @@
           }) }}
         {% endif %}
         {{ govukDetails({
-          summaryText: "Read the benefits of using a Companies House account ",
+          summaryText: "Benefits of using a Companies House account ",
           html: "You: <ul class='govuk-list govuk-list--bullet'>
-          <li>need a Companies House account to file online</li>
           <li>can follow companies to check what they file</li>
           <li>can download a company snapshot to see its information at a glance</li>
         </ul>"
