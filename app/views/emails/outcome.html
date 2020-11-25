@@ -1,0 +1,71 @@
+{% extends "emails/layout-email.html" %}
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {% set buttonHref = "Your reference number is Y2345678" %}
+      {{ govukPanel({
+        titleText: "Outcome of PSC discrepancy report",
+        html: buttonHref
+      }) }}
+      {{ govukTable({
+        rows: [
+          [
+            {
+              text: "Company number"
+            },
+            {
+              text: "10393288"
+            }
+          ],
+          [
+            {
+              text: "Company name"
+            },
+            {
+              text: "ZLC LTD"
+            }
+          ],
+          [
+            {
+              text: "Name of PSC"
+            },
+            {
+              text: "Mrs Catherine Isabel Gaynor"
+            }
+          ],
+          [
+            {
+              text: "Type of discrepancy"
+            },
+            {
+              text: "Name"
+            }
+          ],
+          [
+            {
+              text: "More information about the discrepancy"
+            },
+            {
+              text: "The PSC's name is shown as 'Catherine on the PSC register. The name should be shown as 'Catelin'. This is what is shown on her driver's licence."
+            }
+          ],
+          [
+            {
+              text: "Outcome"
+            },
+            {
+              text: "The PSC register has been updated to show the name 'Catelin'."
+            }
+          ]
+        ]
+      }) }}
+      <h2 class="govuk-heading-m">Contact us</h2>
+      <p class="govuk-body">If you have further information concerning this discrepancy, email
+        <a href="mailto:pscdiscrepancies@companieshouse.gov.uk">pscdiscrepancies@companieshouse.gov.uk</a>
+      </p>
+      <h2 class="govuk-heading-m">Feedback</h2>
+      <p>This is a new service. Help us improve it by completing our
+        <a href="#">quick survey</a>.</p>
+    </div>
+  </div>
+{% endblock %}
