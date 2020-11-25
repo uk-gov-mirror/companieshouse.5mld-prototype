@@ -134,10 +134,6 @@ router.post('/oe-contact', function (req, res) {
       errorList: errors
     })
   } else {
-    notify.sendEmail(
-      'd630c289-6b62-47d4-846b-86e13ecd8650',
-      req.body.email
-    )
     res.redirect('/oe-type')
   }
 })
