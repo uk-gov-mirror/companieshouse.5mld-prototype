@@ -1,8 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
-var NotifyClient = require('notifications-node-client').NotifyClient,
-  notify = new NotifyClient(process.env.NOTIFYAPIKEY)
+var NotifyClient = require('notifications-node-client').NotifyClient, notify = new NotifyClient(process.env.NOTIFYAPIKEY)
 
 // Add your routes here - above the module.exports line
 router.get('/', function (req, res) {
@@ -335,8 +334,9 @@ router.post('/discrepancy-details/other-info', function (req, res) {
 router.post('/check-your-answers', function (req, res) {
   notify.sendEmail(
     'd630c289-6b62-47d4-846b-86e13ecd8650',
-    req.body.email
+    req.session.data['email']
   )
+  console.log(req.session.data['email'])
   res.redirect('confirmation')
 })
 

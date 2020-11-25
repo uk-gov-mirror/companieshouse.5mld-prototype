@@ -150,11 +150,10 @@
     <div class="govuk-grid-column-two-thirds">
       <h2 class="govuk-heading-m">Now submit your report</h2>
       <p class="govuk-body">By submitting this report you are confirming that, to the best of your knowledge, the details you are providing are correct.</p>
-      <form action="/form-handler" method="post" novalidate="novalidate">
+      <form action="/check-your-answers" method="post" novalidate="novalidate">
         <input type="hidden" name="answers-checked" value="true">
         {{ govukButton({
-          text: "Submit report",
-          href: "confirmation"
+          text: "Submit report"
         }) }}
       </form>
     </div>
