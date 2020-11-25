@@ -2,13 +2,18 @@
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      {% set buttonHref = "Your reference number is Y2345678" %}
-      {{ govukPanel({
-        titleText: "Outcome of PSC discrepancy report",
-        html: buttonHref
-      }) }}
+      <h1 class="govuk-heading-l">Outcome of PSC discrepancy report</h1>
+        <h2 class="govuk-heading-m">Report details</h2>
       {{ govukTable({
         rows: [
+        [
+          {
+            text: "Reference number"
+          },
+          {
+            text: "RD-20-00-00-01"
+          }
+        ],
           [
             {
               text: "Company number"
@@ -48,20 +53,17 @@
             {
               text: "The PSC's name is shown as 'Catherine on the PSC register. The name should be shown as 'Catelin'. This is what is shown on her driver's licence."
             }
-          ],
-          [
-            {
-              text: "Outcome"
-            },
-            {
-              text: "The PSC register has been updated to show the name 'Catelin'."
-            }
+
+
           ]
         ]
       }) }}
+  <h2 class="govuk-heading-m">Outcome</h2>
+  <p class="govuk-body">We have completed our investigation into the discrepancy shown on your report. The PSC register has been updated and your report is now closed.
+  </p>
       <h2 class="govuk-heading-m">Contact us</h2>
-      <p class="govuk-body">If you have further information concerning this discrepancy, email
-        <a href="mailto:pscdiscrepancies@companieshouse.gov.uk">pscdiscrepancies@companieshouse.gov.uk</a>
+      <p class="govuk-body">If you need to contact us about your report, email
+        <a href="mailto:pscdiscrepancies@companieshouse.gov.uk">pscdiscrepancies@companieshouse.gov.uk</a>.
       </p>
       <h2 class="govuk-heading-m">Feedback</h2>
       <p>This is a new service. Help us improve it by completing our
