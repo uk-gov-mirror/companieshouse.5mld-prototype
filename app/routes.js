@@ -1,6 +1,9 @@
 const express = require('express')
 const router = express.Router()
 
+var NotifyClient = require('notifications-node-client').NotifyClient,
+  notify = new NotifyClient(process.env.NOTIFYAPIKEY)
+
 // Add your routes here - above the module.exports line
 router.get('/', function (req, res) {
   req.session.destroy()
@@ -131,6 +134,10 @@ router.post('/oe-contact', function (req, res) {
       errorList: errors
     })
   } else {
+    notify.sendEmail(
+      'd630c289-6b62-47d4-846b-86e13ecd8650',
+      req.body.email
+    )
     res.redirect('/oe-type')
   }
 })
@@ -327,6 +334,14 @@ router.post('/discrepancy-details/other-info', function (req, res) {
   } else {
     res.redirect('/check-your-answers')
   }
+})
+
+router.post('/check-your-answers', function (req, res) {
+  notify.sendEmail(
+    'd630c289-6b62-47d4-846b-86e13ecd8650',
+    req.body.email
+  )
+  res.redirect('confirmation')
 })
 
 router.get('/confirmation', function (req, res) {
