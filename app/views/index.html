@@ -2,71 +2,170 @@
 {% block pageTitle %}
   {{serviceName}}
 {% endblock %}
-{% block beforeContent %}
-  {{ govukBreadcrumbs({
-  items: [
-    {
-      text: "Home",
-      href: "https://www.gov.uk/"
-    },
-    {
-      text: "Business and industry",
-      href: "https://www.gov.uk/business-and-industry"
-    },
-    {
-      text: "Report a discrepancy",
-      href: "/"
-    }
-  ]
-}) }}
-{% endblock %}
 {% block content %}
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds-from-desktop">
+    <div class="govuk-grid-column-full">
       <h1 class="govuk-heading-xl">
         {{serviceName}}
+        service
       </h1>
-      <p class="govuk-body">
-        Use this service if you are an obliged entity and the information you hold about a beneficial owner is different from the information on the people with significant control (PSC) register.
-      </p>
-      <p class="govuk-body govuk-!-font-weight-bold">You'll need:</p>
+      <h2 class="govuk-heading-l">Shortcuts</h2>
       <ul class="govuk-list govuk-list--bullet">
-        <li>the company number of the entity being reported as having a discrepancy</li>
-        <li>details of the discrepancy, for example an incorrect address or an invalid PSC statement</li>
-        <li>the date when the discrepancy was first noticed</li>
+        <li>
+          <a href="start.html">Start page</a>
+        </li>
+        <li>
+          <a href="guest-signin/option">Option to sign in</a>
+        </li>
+        <li>
+          <a href="oe-contact">Contact details</a>
+        </li>
+        <li>
+          <a href="oe-type">Type of obliged entity</a>
+        </li>
+        <li>
+          <a href="oe-details">Name of organisation</a>
+        </li>
+        <li>
+          <a href="discrepancy-details/company-number">What is the company number for the PSC with the discrepancy</a>
+        </li>
+        <li>
+          <a href="discrepancy-details/confirm-company">Confirm company</a>
+        </li>
+        <li>
+          <a href="discrepancy-details/psc-names">PSC Names</a>
+        </li>
+        <li>
+          <a href="discrepancy-details/psc-person">PSC Person</a>
+        </li>
+        <li>
+          <a href="discrepancy-details/psc-name-input">PSC name input</a>
+        </li>
+        <li>
+          <a href="check-your-answers">Check answers</a>
+        </li>
+        <li>
+          <a href="confirmation">Confirmation</a>
+        </li>
       </ul>
-      <p class="govuk-inset-text">If you’re not an obliged entity, do not use this service to report a PSC discrepancy. If you want to update your PSC details, you can
-        <a class="govuk-link" href="https://www.gov.uk/make-changes-to-your-limited-company/company-name">tell Companies House about changes to your limited company</a>.</p>
-      <p class="govuk-body">Reporting a discrepancy takes up to 10 minutes.
-      </p>
-      {{ govukButton({
-        text: "Start now",
-        href: "/guest-signin/option",
-        isStartButton: true
-      }) }}
-      <h2 class="govuk-heading-m">Before you start</h2>
-      <p class="govuk-body">You should
-        <a class="govuk-link" href="guidance.html">read the guidance about reporting a discrepancy</a>.</p>
-      <p class="govuk-body">If one or more person of significant control (PSC) for this company has their details protected, you will not be able to use this service to report a discrepancy. You must
-        <a href="guidance#protected-psc">contact the PSC discrepancy team</a>
-        directly instead.
-      </p>
-    </div>
-    <div class="govuk-grid-column-one-third-from-desktop">
-      <aside class="app-related-items" role="complementary">
-        <h2 class="govuk-heading-m" id="subsection-title">
-          Links
-        </h2>
-        <nav role="navigation" aria-labelledby="subsection-title">
-          <ul class="govuk-list govuk-body-s">
-            <li>
-              <a class="govuk-link" href="guidance.html">
-                Guidance on reporting a discrepancy
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </aside>
+      <h2 class="govuk-heading-l">Previously tested versions</h2>
+
+      <table class="govuk-table">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Version</th>
+            <th scope="col" class="govuk-table__header">Tested on</th>
+            <th scope="col" class="govuk-table__header">Changes</th>
+            <th scope="col" class="govuk-table__header">Status</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Version 3</th>
+            <td class="govuk-table__cell">TBC</td>
+            <td class="govuk-table__cell">
+              <details class="govuk-details" data-module="govuk-details">
+                <summary class="govuk-details__summary">
+                  <span class="govuk-details__summary-text">
+                    Changes included in version 3
+                  </span>
+                </summary>
+                <div class="govuk-details__text">
+                  <ul class="govuk-list govuk-list--bullet">
+                    <li>Change 1</li>
+                    <li>Change 2</li>
+                    <li>Change 3</li>
+                  </ul>
+                </div>
+              </details>
+            </td>
+            <td class="govuk-table__cell">
+              {{govukTag({
+                text: "User testing",
+                classes: "govuk-tag--yellow"
+              })}}
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Version 2.2</th>
+            <td class="govuk-table__cell">TBC</td>
+            <td class="govuk-table__cell">
+              <details class="govuk-details" data-module="govuk-details">
+                <summary class="govuk-details__summary">
+                  <span class="govuk-details__summary-text">
+                    Changes included in version 2.2
+                  </span>
+                </summary>
+                <div class="govuk-details__text">
+                  <ul class="govuk-list govuk-list--bullet">
+                    <li>Change 1</li>
+                    <li>Change 2</li>
+                    <li>Change 3</li>
+                  </ul>
+                </div>
+              </details>
+            </td>
+            <td class="govuk-table__cell">
+              {{govukTag({
+                text: "Ready for dev",
+                classes: "govuk-tag--green"
+              })}}
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Version 2.1</th>
+            <td class="govuk-table__cell">TBC</td>
+            <td class="govuk-table__cell">
+              <details class="govuk-details" data-module="govuk-details">
+                <summary class="govuk-details__summary">
+                  <span class="govuk-details__summary-text">
+                    Changes included in version 2.1
+                  </span>
+                </summary>
+                <div class="govuk-details__text">
+                  <ul class="govuk-list govuk-list--bullet">
+                    <li>Change 1</li>
+                    <li>Change 2</li>
+                    <li>Change 3</li>
+                  </ul>
+                </div>
+              </details>
+            </td>
+            <td class="govuk-table__cell">
+              {{govukTag({
+                text: "Ready for dev",
+                classes: "govuk-tag--green"
+              })}}
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Version 2</th>
+            <td class="govuk-table__cell">TBC</td>
+            <td class="govuk-table__cell">
+              <details class="govuk-details" data-module="govuk-details">
+                <summary class="govuk-details__summary">
+                  <span class="govuk-details__summary-text">
+                    Changes included in version 2
+                  </span>
+                </summary>
+                <div class="govuk-details__text">
+                  <ul class="govuk-list govuk-list--bullet">
+                    <li>Change 1</li>
+                    <li>Change 2</li>
+                    <li>Change 3</li>
+                  </ul>
+                </div>
+              </details>
+            </td>
+            <td class="govuk-table__cell">
+              {{govukTag({
+                text: "Ready for dev",
+                classes: "govuk-tag--green"
+              })}}
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 {% endblock %}
