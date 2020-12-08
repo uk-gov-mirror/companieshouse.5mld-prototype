@@ -11,7 +11,7 @@
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
-      <h1 class="govuk-heading-l">Organisation details</h1>
+      <h1 class="govuk-heading-l">What are your organisation details?</h1>
       <form action="/oe-type" method="post">
         {% if errorTelephoneNumber == true %}
           {{ govukErrorSummary({
@@ -32,7 +32,7 @@
         {% else %}
           {{ govukInput({
             label: {
-              text: "What is the name of your organisation?"
+              text: "Name of organisation"
             },
               classes: "govuk-!-width-two-thirds",
             id: "your-organisation-name",
@@ -52,7 +52,7 @@
             },
             fieldset: {
               legend: {
-                text: "What type of organisation are you?"
+                text: "Type of organisation are you?"
               }
             },
             items: [
