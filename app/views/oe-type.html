@@ -11,7 +11,34 @@
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
+      <h1 class="govuk-heading-l">Organisation details</h1>
       <form action="/oe-type" method="post">
+        {% if errorTelephoneNumber == true %}
+          {{ govukErrorSummary({
+              titleText: "There is a problem",
+              errorList: errorList
+          }) }}
+          {{ govukInput({
+            label: {
+              text: "What is the name of your organisation?"
+            },
+            classes: "govuk-!-width-two-thirds",
+            id: "your-organisation-name",
+            name: "your-organisation-name",
+            errorMessage: {
+              text: "Enter your organisation name"
+            }
+          }) }}
+        {% else %}
+          {{ govukInput({
+            label: {
+              text: "What is the name of your organisation?"
+            },
+              classes: "govuk-!-width-two-thirds",
+            id: "your-organisation-name",
+            name: "your-organisation-name"
+          }) }}
+        {% endif %}
         {% if errorType == true %}
           {{ govukErrorSummary({
             titleText: "There is a problem",
@@ -25,9 +52,7 @@
             },
             fieldset: {
               legend: {
-                text: "What type of organisation are you?",
-                isPageHeading: true,
-                classes: "govuk-fieldset__legend--l"
+                text: "What type of organisation are you?"
               }
             },
             items: [
@@ -91,9 +116,7 @@
             name: "obliged-type",
             fieldset: {
               legend: {
-                text: "What type of organisation are you?",
-                isPageHeading: true,
-                classes: "govuk-fieldset__legend--l"
+                text: "What type of organisation are you?"
               }
             },
             items: [

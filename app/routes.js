@@ -90,7 +90,7 @@ router.post('/oe-type', function (req, res) {
       errorList: errors
     })
   } else {
-    res.redirect('oe-details')
+    res.redirect('/discrepancy-details/company-number')
   }
 })
 
@@ -134,28 +134,6 @@ router.post('/oe-contact', function (req, res) {
     })
   } else {
     res.redirect('/oe-type')
-  }
-})
-
-// Organisation name
-router.get('/oe-details', function (req, res) {
-  res.render('oe-details', {
-  })
-})
-
-router.post('/oe-details', function (req, res) {
-  var errors = []
-  if (req.session.data['your-organisation-name'] === '') {
-    errors.push({
-      text: 'Enter your organisation name',
-      href: '#your-organisation-name'
-    })
-    res.render('oe-details', {
-      errorTelephoneNumber: true,
-      errorList: errors
-    })
-  } else {
-    res.redirect('/discrepancy-details/company-number')
   }
 })
 
