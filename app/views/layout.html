@@ -43,7 +43,7 @@
   }) }}
   {{ govukPhaseBanner({
   tag: {
-    text: "alpha"
+    text: "beta"
   },
   html: 'This is a new service – your <a class="govuk-link" href="https://www.research.net/r/reptpscdisp-fdbk">feedback</a> will help us to improve it.',
   classes: 'govuk-width-container'
@@ -67,7 +67,8 @@
             href: "/accessibility.html",
             text: "Accessibility statement"
           }
-        ]
+        ],
+            html: 'Built by <a href="https://www.gov.uk/government/organisations/companies-house" class="govuk-footer__link">Companies House</a>'
       }
     }) }}
   {% endblock %}

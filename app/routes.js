@@ -336,7 +336,6 @@ router.post('/check-your-answers', function (req, res) {
     'd630c289-6b62-47d4-846b-86e13ecd8650',
     req.session.data['email']
   )
-  console.log(req.session.data['email'])
   res.redirect('confirmation')
 })
 
