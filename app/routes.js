@@ -199,27 +199,126 @@ router.post('/discrepancy-details/psc-names', function (req, res) {
   }
 })
 
-router.get('/discrepeancy-details/psc-person', function (req, res) {
+// PSC Person
+router.get('/discrepeancy-details/psc-person', function (req, res, next) {
   res.render('/discrepeancy-details/psc-person', {
   })
 })
 
-router.post('/discrepancy-details/psc-person', function (req, res) {
+router.post('/discrepancy-details/psc-person', function (req, res, next) {
   var errors = []
-  if (typeof req.session.data['psc-name'] === 'undefined') {
+  var myCheckboxes = req.body.pscname
+  if (typeof req.body.pscname === 'undefined') {
     errors.push({
       text: 'Select the PSC with the incorrect information',
-      href: '#psc'
+      href: '#pscname'
     })
     res.render('discrepancy-details/psc-person', {
       errorPSC: true,
       errorList: errors
     })
+    return
+  } if (myCheckboxes.includes('noc')) {
+    res.redirect('psc-noc-input')
+    return
+  } if (myCheckboxes.includes('address')) {
+    res.redirect('psc-address-input')
+    return
+  } if (myCheckboxes.includes('name')) {
+    res.redirect('psc-name-input')
+    return
+  } if (myCheckboxes.includes('dob')) {
+    res.redirect('psc-dob-input')
+    return
+  } if (myCheckboxes.includes('nationality')) {
+    res.redirect('psc-nationality-input')
+    return
   } else {
-    res.redirect('/discrepancy-details/psc-name-input')
+    res.redirect('psc-appointed-on-input')
+    return
   }
 })
 
+// PSC Person Nature of Control
+router.get('/discrepeancy-details/psc-noc-input', function (req, res, next) {
+  res.render('/discrepeancy-details/psc-noc-input', {
+  })
+})
+
+router.post('/discrepancy-details/psc-noc-input', function (req, res, next) {
+  var errors = []
+  var myCheckboxes = req.session.data['pscname']
+
+  if (req.session.data['pscnoc'] === ' ') {
+    errors.push({
+      text: 'Select the PSC with the incorrect information',
+      href: '#pscname'
+    })
+    res.render('discrepancy-details/psc-noc-input', {
+      errorPSC: true,
+      errorList: errors
+    })
+    return
+  } if (myCheckboxes.includes('address')) {
+    res.redirect('psc-address-input')
+    return
+  } if (myCheckboxes.includes('name')) {
+    res.redirect('psc-name-input')
+    return
+  } if (myCheckboxes.includes('dob')) {
+    res.redirect('psc-dob-input')
+    return
+  } if (myCheckboxes.includes('nationality')) {
+    res.redirect('psc-nationality-input')
+    return
+  } if (myCheckboxes.includes('nd')) {
+    res.redirect('psc-appointed-on-input')
+    return
+  } else {
+    res.redirect('../check-your-answers')
+    return
+  }
+})
+
+// PSC Person Address
+router.get('/discrepeancy-details/psc-address-input', function (req, res, next) {
+  res.render('/discrepeancy-details/psc-address-input', {
+  })
+})
+
+router.post('/discrepancy-details/psc-address-input', function (req, res, next) {
+  var errors = []
+  var myCheckboxes = req.session.data['pscname']
+
+  if (req.session.data['pscnoc'] === ' ') {
+    errors.push({
+      text: 'Select the PSC with the incorrect information',
+      href: '#pscname'
+    })
+    res.render('discrepancy-details/psc-address-input', {
+      errorPSC: true,
+      errorList: errors
+    })
+    return
+  } if (myCheckboxes.includes('name')) {
+    res.redirect('psc-name-input')
+    return
+  } if (myCheckboxes.includes('dob')) {
+    res.redirect('psc-dob-input')
+    return
+  } if (myCheckboxes.includes('nationality')) {
+    res.redirect('psc-nationality-input')
+    return
+  } if (myCheckboxes.includes('nd')) {
+    res.redirect('psc-appointed-on-input')
+    return
+  } else {
+    res.redirect('../check-your-answers')
+    return
+  }
+})
+
+// PSC Person Name
 router.get('/discrepeancy-details/psc-name-input', function (req, res) {
   res.render('/discrepeancy-details/psc-name-input', {
   })
@@ -227,7 +326,8 @@ router.get('/discrepeancy-details/psc-name-input', function (req, res) {
 
 router.post('/discrepancy-details/psc-name-input', function (req, res) {
   var errors = []
-  if (typeof req.session.data['psc-name-input'] === 'undefined') {
+  var myCheckboxes = req.session.data['pscname']
+  if (req.session.data['psc-name-input'] === '') {
     errors.push({
       text: 'Select the PSC with the incorrect information',
       href: '#psc-name-input'
@@ -236,8 +336,99 @@ router.post('/discrepancy-details/psc-name-input', function (req, res) {
       errorPSC: true,
       errorList: errors
     })
+  } if (myCheckboxes.includes('dob')) {
+    res.redirect('psc-dob-input')
+    return
+  } if (myCheckboxes.includes('nationality')) {
+    res.redirect('psc-nationality-input')
+    return
+  } if (myCheckboxes.includes('nd')) {
+    res.redirect('psc-appointed-on-input')
+    return
   } else {
     res.redirect('../check-your-answers')
+    return
+  }
+})
+
+// PSC DOB
+router.get('/discrepeancy-details/psc-dob-input', function (req, res) {
+  res.render('/discrepeancy-details/psc-dob-input', {
+  })
+})
+
+router.post('/discrepancy-details/psc-dob-input', function (req, res) {
+  var errors = []
+  var myCheckboxes = req.session.data['pscname']
+  if (req.session.data['psc-dob-input'] === '') {
+    errors.push({
+      text: 'Select the PSC with the incorrect information',
+      href: '#psc-dob-input'
+    })
+    res.render('discrepancy-details/psc-dob-input', {
+      errorPSC: true,
+      errorList: errors
+    })
+  } if (myCheckboxes.includes('nationality')) {
+    res.redirect('psc-nationality-input')
+    return
+  } if (myCheckboxes.includes('nd')) {
+    res.redirect('psc-appointed-on-input')
+    return
+  } else {
+    res.redirect('../check-your-answers')
+    return
+  }
+})
+
+// PSC Nationality
+router.get('/discrepeancy-details/psc-nationality-input', function (req, res) {
+  res.render('/discrepeancy-details/psc-nationality-input', {
+  })
+})
+
+router.post('/discrepancy-details/psc-nationality-input', function (req, res) {
+  var errors = []
+  var myCheckboxes = req.session.data['pscname']
+  if (req.session.data['psc-nationality-input'] === '') {
+    errors.push({
+      text: 'Select the PSC with the incorrect information',
+      href: '#psc-nationality-input'
+    })
+    res.render('discrepancy-details/psc-nationality-input', {
+      errorPSC: true,
+      errorList: errors
+    })
+  } if (myCheckboxes.includes('nd')) {
+    res.redirect('psc-appointed-on-input')
+    return
+  } else {
+    res.redirect('../check-your-answers')
+    return
+  }
+})
+
+// PSC Appointed on
+router.get('/discrepeancy-details/psc-appointed-on-input', function (req, res) {
+  res.render('/discrepeancy-details/psc-appointed-on-input', {
+  })
+})
+
+router.post('/discrepancy-details/psc-appointed-on-input', function (req, res) {
+  var errors = []
+  var myCheckboxes = req.session.data['pscname']
+  if (req.session.data['psc-appointed-on-input'] === '') {
+    errors.push({
+      text: 'Select the PSC with the incorrect information',
+      href: '#psc-appointed-on-input'
+    })
+    res.render('discrepancy-details/psc-appointed-on-input', {
+      errorPSC: true,
+      errorList: errors
+    })
+  } else {
+    res.redirect('../check-your-answers')
+    return
   }
 })
 

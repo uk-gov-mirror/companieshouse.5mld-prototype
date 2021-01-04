@@ -1,7 +1,7 @@
 {% set title = "Tell us your company number" %}
 {% extends "layout.html" %}
 {% block pageTitle %}
-What type of discrepancy are you reporting? - Report a discrepancy about a beneficial owner on the PSC register - GOV.UK
+  What type of discrepancy are you reporting? - Report a discrepancy about a beneficial owner on the PSC register - GOV.UK
 {% endblock %}
 {% block beforeContent %}
   {{ govukBackLink({
@@ -14,8 +14,8 @@ What type of discrepancy are you reporting? - Report a discrepancy about a benef
     <div class="govuk-grid-column-two-thirds-from-desktop">
       <form action="/discrepancy-details/psc-person" method="post">
         {{ govukCheckboxes({
-        idPrefix: "psc-name",
-        name: "psc-name",
+        idPrefix: "pscname",
+        name: "pscname",
         fieldset: {
           legend: {
             html: "What type of discrepancy are you reporting for Mrs Catherine Isabel Gaynor?",
