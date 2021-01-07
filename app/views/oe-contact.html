@@ -1,5 +1,6 @@
 {% extends "layout.html" %}
 {% block pageTitle %}
+  {% if errorEmail == true or errorNametwo == true %}Error:{% endif %}
   What are your contact details? - Report a discrepancy about a beneficial owner on the PSC register - GOV.UK
 {% endblock %}
 {% block beforeContent %}
