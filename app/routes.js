@@ -182,7 +182,7 @@ router.get('/discrepeancy-details/psc-names', function (req, res) {
 
 router.post('/discrepancy-details/psc-names', function (req, res) {
   var errors = []
-  if (typeof req.session.data['psc'] === 'undefined') {
+  if (typeof req.body.psc === 'undefined') {
     errors.push({
       text: 'Select the PSC with the incorrect information',
       href: '#psc'
@@ -192,10 +192,15 @@ router.post('/discrepancy-details/psc-names', function (req, res) {
       errorList: errors
     })
     return
-  } if (req.session.data['psc'] === 'other') {
+  } if (req.body.psc.includes('duplicate')) {
+    res.redirect('/discrepancy-details/psc-duplicate')
+    return
+  } if (req.body.psc.includes('other')) {
     res.redirect('/discrepancy-details/psc-missing')
+    return
   } else {
     res.redirect('/discrepancy-details/psc-person')
+    return
   }
 })
 
@@ -500,6 +505,7 @@ router.post('/discrepancy-details/other-info', function (req, res) {
   }
 })
 
+// Check your answers page
 router.post('/check-your-answers', function (req, res) {
   notify.sendEmail(
     'd630c289-6b62-47d4-846b-86e13ecd8650',

@@ -1,18 +1,17 @@
 {% extends "layout.html" %}
 {% block pageTitle %}
-  {% if errorPSC == true %}Error:{% endif %}
   Which PSC has a discrepancy? - Report a discrepancy about a beneficial owner on the PSC register - GOV.UK
 {% endblock %}
 {% block beforeContent %}
   {{ govukBackLink({
     text: "Back",
-    href: "/discrepancy-details/confirm-company"
+    href: "psc-names"
   }) }}
 {% endblock %}
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
-      <form action="/discrepancy-details/psc-names" method="post">
+      <form action="/discrepancy-details/psc-duplicate" method="post">
         {% if errorPSC == true %}
           {{ govukErrorSummary({
             titleText: "There is a problem",
@@ -31,7 +30,7 @@
             },
             fieldset: {
               legend: {
-                text: "Which PSC has a discrepancy for ZLC LTD?",
+                text: "Which PSC's are duplicates?",
                 isPageHeading: true,
                 classes: "govuk-fieldset__legend--l"
               }
@@ -57,10 +56,6 @@
               {
                 value: "other",
                 text: "PSC is missing"
-              },
-              {
-                value: "duplicate",
-                text: "PSC is a duplicate"
               }
             ]
           }) }}
@@ -70,7 +65,7 @@
             name: "psc",
             fieldset: {
               legend: {
-                text: "Which PSC has a discrepancy for ZLC LTD?",
+                text: "Which PSC's are duplicates?",
                 isPageHeading: true,
                 classes: "govuk-fieldset__legend--l"
               }
@@ -92,18 +87,20 @@
                 hint: {
                   text: "Born June 1952"
                 }
-              },
-              {
-                value: "other",
-                text: "PSC is missing"
-              },
-              {
-                value: "duplicate",
-                text: "PSC is a duplicate"
               }
             ]
           }) }}
         {% endif %}
+        {{ govukTextarea({
+          name: "more-detail",
+          id: "more-detail",
+          label: {
+            text: "Can you provide more detail? (optional)"
+          },
+          hint: {
+            text: ""
+          }
+        }) }}
         {{ govukButton({
           text: "Continue"
         }) }}

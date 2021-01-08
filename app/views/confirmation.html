@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% block pageTitle %}
-Confirmation page - Report a discrepancy about a beneficial owner on the PSC register - GOV.UK
+  Confirmation page - Report a discrepancy about a beneficial owner on the PSC register - GOV.UK
 {% endblock %}
 {% block content %}
   <div class="govuk-grid-row">
@@ -59,7 +59,9 @@ Confirmation page - Report a discrepancy about a beneficial owner on the PSC reg
       </dl>
       <a class="govuk-link gem-c-print-link__link govuk-link--no-visited-state" rel="alternate" data-module="button" role="button" href="javascript:window.print()">Print or save report</a>
       <h2 class="govuk-heading-m">What happens next</h2>
-      <p class="govuk-body">We have sent a confirmation email to sphillips@myorganisation.org which contains:
+      <p class="govuk-body">We have sent a confirmation email to
+        {{ data['email'] }}
+        which contains:
         <ul class="govuk-list govuk-list--bullet">
           <li>your reference number</li>
           <li>a copy of the report</li>
