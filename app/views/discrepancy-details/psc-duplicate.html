@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% block pageTitle %}
-  Which PSC has a discrepancy? - Report a discrepancy about a beneficial owner on the PSC register - GOV.UK
+  Which PSC is a duplicate? - Report a discrepancy about a beneficial owner on the PSC register - GOV.UK
 {% endblock %}
 {% block beforeContent %}
   {{ govukBackLink({
@@ -30,7 +30,7 @@
             },
             fieldset: {
               legend: {
-                text: "Which PSC's are duplicates?",
+                text: "Which PSC is a duplicate?",
                 isPageHeading: true,
                 classes: "govuk-fieldset__legend--l"
               }
@@ -65,7 +65,7 @@
             name: "psc",
             fieldset: {
               legend: {
-                text: "Which PSC's are duplicates?",
+                text: "Which PSC is a duplicate?",
                 isPageHeading: true,
                 classes: "govuk-fieldset__legend--l"
               }
@@ -91,16 +91,22 @@
             ]
           }) }}
         {% endif %}
-        {{ govukTextarea({
-          name: "more-detail",
-          id: "more-detail",
-          label: {
-            text: "Can you provide more detail? (optional)"
-          },
-          hint: {
-            text: ""
-          }
-        }) }}
+        {% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+
+{{ govukTextarea({
+  name: "more-detail",
+  id: "more-detail",
+
+  label: {
+    text: "Can you provide more detail?",
+    classes: "govuk-label--m",
+    isPageHeading: true
+  },
+  hint: {
+    text: "Tell us any other relevant information about this discrepancy that supports your report (optional)."
+  }
+}) }}
+
         {{ govukButton({
           text: "Continue"
         }) }}
