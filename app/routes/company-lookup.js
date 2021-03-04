@@ -109,6 +109,9 @@ module.exports = function (router) {
     } if (pscType === 'corporate-entity-person-with-significant-control') {
       res.redirect('/discrepancy-details/psc-company')
       return
+    } if (pscType === 'missing') {
+      res.redirect('/discrepancy-details/other-info')
+      return
     } else {
       res.redirect('/discrepancy-details/psc-person')
       return

@@ -75,27 +75,33 @@
             PSC
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ data['psc'] }}
+            {% if (data['psc'] == 'missing') %}
+              Missing
+            {% else %}
+              {{ data['psc'] }}
+            {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions"></dd>
         </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Discrepancy
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {% if data['pscperson'] %}
-              <ul class="govuk-list govuk-list--bullet">
-                {% for feature in data['pscperson'] %}
-                  <li>{{ feature }}</li>
-                {% endfor %}
-              {% else %}
-                No reason selected
-              {% endif %}
-            </ul>
-          </dd>
-          <dd class="govuk-summary-list__actions"></dd>
-        </div>
+        {% if (data['psc'] !== 'missing') %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Discrepancy
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['pscperson'] %}
+                <ul class="govuk-list govuk-list--bullet">
+                  {% for feature in data['pscperson'] %}
+                    <li>{{ feature }}</li>
+                  {% endfor %}
+                {% else %}
+                  No reason selected
+                {% endif %}
+              </ul>
+            </dd>
+            <dd class="govuk-summary-list__actions"></dd>
+          </div>
+        {% endif %}
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
             Additional information
